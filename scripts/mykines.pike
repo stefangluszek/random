@@ -10,6 +10,7 @@ constant LIMIT = 80;
 * 10:20    2
 * 16:20    12
 */
+
 int main(int c, array(string) v)
 {
     if (c < 2)
@@ -44,17 +45,15 @@ int main(int c, array(string) v)
 
     foreach (data, mapping booking)
     {
-        string d_location = booking["departureLocation"];
         string d_time = booking["departureTime"];
         string d_date = booking["departureDate"];
 
-        if (!d_location || !d_time || !d_date || !sizeof(d_location)
-            || !sizeof(d_time) || !sizeof(d_date))
+        if (!d_time || !d_date || !sizeof(d_time) || !sizeof(d_date))
         {
             continue;
         }
 
-        if (has_prefix(d_location, "S") && d_date == v[1])
+        if (d_date == v[1])
         {
             booked[d_time] += (int)booking["adults"];
             booked[d_time] += (int)booking["juniorSenior"];
