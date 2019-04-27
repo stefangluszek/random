@@ -11,11 +11,11 @@ Concurrent.Future do_something_1(void|bool err)
     return p->future();
 }
 
-Concurrent.Future do_something_2()
+Concurrent.Future do_something_2(string k)
 {
     werror("do_something_2\n");
     Concurrent.Promise p = Concurrent.Promise();
-    call_out(lambda(){ p->success("Done the 2nd thing\n");}, 1);
+    call_out(lambda(){ p->success(k + "Done the 2nd thing\n");}, 1);
     return p->future();
 }
 
